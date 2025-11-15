@@ -1,0 +1,276 @@
+[
+    {
+        "id": "128443bada9e2959",
+        "type": "tab",
+        "label": "フロー 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6ca57b5896651fa6",
+        "type": "ui-dropdown",
+        "z": "128443bada9e2959",
+        "group": "",
+        "name": "",
+        "label": "性別",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "chips": false,
+        "clearable": false,
+        "options": [
+            {
+                "label": "男性",
+                "value": "male",
+                "type": "str"
+            },
+            {
+                "label": "女性",
+                "value": "female",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "typeIsComboBox": true,
+        "msgTrigger": "onChange",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "9c405d63b64e17ac"
+            ]
+        ]
+    },
+    {
+        "id": "ceef5bc87cf66309",
+        "type": "ui-dropdown",
+        "z": "128443bada9e2959",
+        "group": "",
+        "name": "",
+        "label": "シチュエーション",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "chips": false,
+        "clearable": false,
+        "options": [
+            {
+                "label": "友達と",
+                "value": "friends",
+                "type": "str"
+            },
+            {
+                "label": "恋人と",
+                "value": "couple",
+                "type": "str"
+            },
+            {
+                "label": "職場で",
+                "value": "work",
+                "type": "str"
+            },
+            {
+                "label": "家族と",
+                "value": "family",
+                "type": "str"
+            },
+            {
+                "label": "一人で",
+                "value": "solo",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "typeIsComboBox": true,
+        "msgTrigger": "onChange",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "9c405d63b64e17ac"
+            ]
+        ]
+    },
+    {
+        "id": "fb082fa9bf905b3e",
+        "type": "ui-slider",
+        "z": "128443bada9e2959",
+        "group": "",
+        "name": "",
+        "label": "人数",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": "1",
+        "max": "20",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 90,
+        "y": 20,
+        "wires": [
+            [
+                "9c405d63b64e17ac"
+            ]
+        ]
+    },
+    {
+        "id": "97867e3588c5cebf",
+        "type": "ui-button",
+        "z": "128443bada9e2959",
+        "group": "",
+        "name": "",
+        "label": "送信",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "submit",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "4902b0a8aae6d34b"
+            ]
+        ]
+    },
+    {
+        "id": "9c405d63b64e17ac",
+        "type": "function",
+        "z": "128443bada9e2959",
+        "name": "入力値を保存",
+        "func": "if (msg.topic === \"gender\") flow.set(\"gender\", msg.payload);\nif (msg.topic === \"birthYear\") flow.set(\"birthYear\", msg.payload);\nif (msg.topic === \"count\") flow.set(\"count\", msg.payload);\nif (msg.topic === \"meetingType\") flow.set(\"meetingType\", msg.payload);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1f1527a2345d9ce",
+        "type": "function",
+        "z": "128443bada9e2959",
+        "name": "送信ボタンでまとめる",
+        "func": "if (msg.payload === \"submit\") {\n    msg.payload = {\n        gender: flow.get(\"gender\"),\n        birthYear: flow.get(\"birthYear\"),\n        count: flow.get(\"count\"),\n        meetingType: flow.get(\"meetingType\")\n    };\n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4902b0a8aae6d34b",
+        "type": "debug",
+        "z": "128443bada9e2959",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c8e50664b0c49a05",
+        "type": "ui-slider",
+        "z": "128443bada9e2959",
+        "group": "",
+        "name": "",
+        "label": "生まれ年",
+        "tooltip": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": "1950",
+        "max": "2025",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "9c405d63b64e17ac"
+            ]
+        ]
+    },
+    {
+        "id": "a302bfe8dd83555d",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.29.0"
+        }
+    }
+]
