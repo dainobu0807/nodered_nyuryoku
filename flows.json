@@ -1,272 +1,234 @@
 [
     {
-        "id": "128443bada9e2959",
+        "id": "9c6ce18466c21dae",
         "type": "tab",
-        "label": "フロー 3",
+        "label": "Karaoke UI",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
-        "id": "6ca57b5896651fa6",
-        "type": "ui-dropdown",
-        "z": "128443bada9e2959",
-        "group": "",
-        "name": "",
-        "label": "性別",
-        "tooltip": "",
-        "order": 0,
-        "width": 0,
+        "id": "f4bd91ddb5770966",
+        "type": "ui-form",
+        "z": "9c6ce18466c21dae",
+        "name": "エントリーフォーム",
+        "group": "uigroup-01",
+        "label": "",
+        "order": 1,
+        "width": 12,
         "height": 0,
-        "passthru": false,
-        "multiple": false,
-        "chips": false,
-        "clearable": false,
         "options": [
             {
-                "label": "男性",
-                "value": "male",
-                "type": "str"
+                "label": "性別",
+                "key": "gender",
+                "type": "dropdown",
+                "required": false,
+                "rows": null
             },
             {
-                "label": "女性",
-                "value": "female",
-                "type": "str"
+                "label": "参加スタイル",
+                "key": "party",
+                "type": "dropdown",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "シチュエーション",
+                "key": "situation",
+                "type": "dropdown",
+                "required": true,
+                "rows": null
             }
         ],
+        "formValue": {
+            "gender": "",
+            "party": "",
+            "situation": ""
+        },
         "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
+        "submit": "送信",
+        "cancel": "",
+        "resetOnSubmit": true,
+        "topic": "",
+        "topicType": "str",
+        "splitLayout": false,
         "className": "",
-        "typeIsComboBox": true,
-        "msgTrigger": "onChange",
-        "x": 90,
-        "y": 60,
-        "wires": [
-            [
-                "9c405d63b64e17ac"
-            ]
-        ]
-    },
-    {
-        "id": "ceef5bc87cf66309",
-        "type": "ui-dropdown",
-        "z": "128443bada9e2959",
-        "group": "",
-        "name": "",
-        "label": "シチュエーション",
-        "tooltip": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "multiple": false,
-        "chips": false,
-        "clearable": false,
-        "options": [
+        "dropdownOptions": [
             {
-                "label": "友達と",
-                "value": "friends",
-                "type": "str"
+                "dropdown": "gender",
+                "key": "male",
+                "label": "男性"
             },
             {
-                "label": "恋人と",
-                "value": "couple",
-                "type": "str"
+                "dropdown": "gender",
+                "key": "female",
+                "label": "女性"
             },
             {
-                "label": "職場で",
-                "value": "work",
-                "type": "str"
+                "dropdown": "gender",
+                "key": "other",
+                "label": "その他"
             },
             {
-                "label": "家族と",
-                "value": "family",
-                "type": "str"
+                "dropdown": "gender",
+                "key": "na",
+                "label": "回答しない"
             },
             {
-                "label": "一人で",
-                "value": "solo",
-                "type": "str"
+                "dropdown": "party",
+                "key": "solo",
+                "label": "一人で"
+            },
+            {
+                "dropdown": "party",
+                "key": "family",
+                "label": "家族で"
+            },
+            {
+                "dropdown": "party",
+                "key": "friends",
+                "label": "友人と"
+            },
+            {
+                "dropdown": "party",
+                "key": "work",
+                "label": "職場仲間と"
+            },
+            {
+                "dropdown": "situation",
+                "key": "icebreak",
+                "label": "初対面のアイスブレイク"
+            },
+            {
+                "dropdown": "situation",
+                "key": "celebration",
+                "label": "お祝いムード"
+            },
+            {
+                "dropdown": "situation",
+                "key": "closing",
+                "label": "締めの一曲"
+            },
+            {
+                "dropdown": "situation",
+                "key": "duet",
+                "label": "デュエット向け"
+            },
+            {
+                "dropdown": "situation",
+                "key": "energy",
+                "label": "盛り上げたい"
+            },
+            {
+                "dropdown": "situation",
+                "key": "calm",
+                "label": "落ち着きたい"
             }
         ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "typeIsComboBox": true,
-        "msgTrigger": "onChange",
-        "x": 110,
-        "y": 140,
+        "x": 160,
+        "y": 160,
         "wires": [
             [
-                "9c405d63b64e17ac"
+                "d657dd6695e5814a",
+                "9b0008af45176628"
             ]
         ]
     },
     {
-        "id": "fb082fa9bf905b3e",
-        "type": "ui-slider",
-        "z": "128443bada9e2959",
-        "group": "",
-        "name": "",
-        "label": "人数",
-        "tooltip": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "outs": "all",
-        "topic": "topic",
-        "topicType": "msg",
-        "thumbLabel": "true",
-        "showTicks": "always",
-        "min": "1",
-        "max": "20",
-        "step": 1,
-        "className": "",
-        "iconPrepend": "",
-        "iconAppend": "",
-        "color": "",
-        "colorTrack": "",
-        "colorThumb": "",
-        "showTextField": false,
-        "x": 90,
-        "y": 20,
-        "wires": [
-            [
-                "9c405d63b64e17ac"
-            ]
-        ]
-    },
-    {
-        "id": "97867e3588c5cebf",
-        "type": "ui-button",
-        "z": "128443bada9e2959",
-        "group": "",
-        "name": "",
-        "label": "送信",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "emulateClick": false,
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "iconPosition": "left",
-        "payload": "submit",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "buttonColor": "",
-        "textColor": "",
-        "iconColor": "",
-        "enableClick": true,
-        "enablePointerdown": false,
-        "pointerdownPayload": "",
-        "pointerdownPayloadType": "str",
-        "enablePointerup": false,
-        "pointerupPayload": "",
-        "pointerupPayloadType": "str",
-        "x": 90,
-        "y": 260,
-        "wires": [
-            [
-                "4902b0a8aae6d34b"
-            ]
-        ]
-    },
-    {
-        "id": "9c405d63b64e17ac",
+        "id": "d657dd6695e5814a",
         "type": "function",
-        "z": "128443bada9e2959",
-        "name": "入力値を保存",
-        "func": "if (msg.topic === \"gender\") flow.set(\"gender\", msg.payload);\nif (msg.topic === \"birthYear\") flow.set(\"birthYear\", msg.payload);\nif (msg.topic === \"count\") flow.set(\"count\", msg.payload);\nif (msg.topic === \"meetingType\") flow.set(\"meetingType\", msg.payload);\nreturn null;",
+        "z": "9c6ce18466c21dae",
+        "name": "送信データ整形（曲推定の前処理）",
+        "func": "// フォームから来た選択だけで受け取り、タイムスタンプ付与\nconst p = msg.payload || {};\nmsg.payload = {\n  gender: p.gender || 'na',\n  party: p.party || '',\n  situation: p.situation || '',\n  ts: new Date().toISOString()\n};\nreturn msg;",
         "outputs": 1,
-        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d1f1527a2345d9ce",
-        "type": "function",
-        "z": "128443bada9e2959",
-        "name": "送信ボタンでまとめる",
-        "func": "if (msg.payload === \"submit\") {\n    msg.payload = {\n        gender: flow.get(\"gender\"),\n        birthYear: flow.get(\"birthYear\"),\n        count: flow.get(\"count\"),\n        meetingType: flow.get(\"meetingType\")\n    };\n    return msg;\n}\nreturn null;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
         "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4902b0a8aae6d34b",
-        "type": "debug",
-        "z": "128443bada9e2959",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "c8e50664b0c49a05",
-        "type": "ui-slider",
-        "z": "128443bada9e2959",
-        "group": "",
-        "name": "",
-        "label": "生まれ年",
-        "tooltip": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "outs": "all",
-        "topic": "topic",
-        "topicType": "msg",
-        "thumbLabel": "true",
-        "showTicks": "always",
-        "min": "1950",
-        "max": "2025",
-        "step": 1,
-        "className": "",
-        "iconPrepend": "",
-        "iconAppend": "",
-        "color": "",
-        "colorTrack": "",
-        "colorThumb": "",
-        "showTextField": false,
-        "x": 100,
-        "y": 100,
         "wires": [
             [
-                "9c405d63b64e17ac"
+                "b6e78c83096487f9"
             ]
         ]
     },
     {
-        "id": "a302bfe8dd83555d",
+        "id": "b6e78c83096487f9",
+        "type": "debug",
+        "z": "9c6ce18466c21dae",
+        "name": "送信内容",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "9b0008af45176628",
+        "type": "ui-notification",
+        "z": "9c6ce18466c21dae",
+        "ui": "80e6c4e06f13c249",
+        "position": "top right",
+        "colorDefault": false,
+        "color": "#1bde42",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 0,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "raw": false,
+        "className": "",
+        "name": "送信しました",
+        "x": 660,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "uigroup-01",
+        "type": "ui-group",
+        "name": "エントリー入力",
+        "page": "uipage-01",
+        "width": 12,
+        "order": 1,
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "80e6c4e06f13c249",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "uipage-01",
+        "type": "ui-page",
+        "name": "エントリー",
+        "ui": "80e6c4e06f13c249",
+        "icon": "mdi-microphone-variant",
+        "layout": "notebook",
+        "order": 1
+    },
+    {
+        "id": "05561c3672d9be6b",
         "type": "global-config",
         "env": [],
         "modules": {
