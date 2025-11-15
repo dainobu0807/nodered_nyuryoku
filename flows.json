@@ -1,15 +1,15 @@
 [
     {
-        "id": "9c6ce18466c21dae",
+        "id": "4d636647c5b85c82",
         "type": "tab",
         "label": "Karaoke UI",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "f4bd91ddb5770966",
+        "id": "c069728dfb7f4479",
         "type": "ui-form",
-        "z": "9c6ce18466c21dae",
+        "z": "4d636647c5b85c82",
         "name": "エントリーフォーム",
         "group": "uigroup-01",
         "label": "",
@@ -40,9 +40,9 @@
             }
         ],
         "formValue": {
-            "gender": "",
-            "party": "",
-            "situation": ""
+            "gender": "choose_gender",
+            "party": "choose_party",
+            "situation": "choose_situation"
         },
         "payload": "",
         "submit": "送信",
@@ -53,6 +53,11 @@
         "splitLayout": false,
         "className": "",
         "dropdownOptions": [
+            {
+                "dropdown": "gender",
+                "key": "choose_gender",
+                "label": "選択してください"
+            },
             {
                 "dropdown": "gender",
                 "key": "male",
@@ -75,6 +80,11 @@
             },
             {
                 "dropdown": "party",
+                "key": "choose_party",
+                "label": "選択してください"
+            },
+            {
+                "dropdown": "party",
                 "key": "solo",
                 "label": "一人で"
             },
@@ -92,6 +102,11 @@
                 "dropdown": "party",
                 "key": "work",
                 "label": "職場仲間と"
+            },
+            {
+                "dropdown": "situation",
+                "key": "choose_situation",
+                "label": "選択してください"
             },
             {
                 "dropdown": "situation",
@@ -128,17 +143,17 @@
         "y": 160,
         "wires": [
             [
-                "d657dd6695e5814a",
-                "9b0008af45176628"
+                "6db5fdb4ee92b703",
+                "fdaeabb47c165720"
             ]
         ]
     },
     {
-        "id": "d657dd6695e5814a",
+        "id": "6db5fdb4ee92b703",
         "type": "function",
-        "z": "9c6ce18466c21dae",
+        "z": "4d636647c5b85c82",
         "name": "送信データ整形（曲推定の前処理）",
-        "func": "// フォームから来た選択だけで受け取り、タイムスタンプ付与\nconst p = msg.payload || {};\nmsg.payload = {\n  gender: p.gender || 'na',\n  party: p.party || '',\n  situation: p.situation || '',\n  ts: new Date().toISOString()\n};\nreturn msg;",
+        "func": "// プレースホルダは未選択扱いにして送信\nconst p = msg.payload || {};\nconst normalize = (v, placeholder) => (v && v !== placeholder) ? v : '';\nmsg.payload = {\n  gender: normalize(p.gender, 'choose_gender') || 'na',\n  party: normalize(p.party, 'choose_party'),\n  situation: normalize(p.situation, 'choose_situation'),\n  ts: new Date().toISOString()\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -148,20 +163,21 @@
         "y": 260,
         "wires": [
             [
-                "b6e78c83096487f9"
+                "3d21b675e584155e"
             ]
         ]
     },
     {
-        "id": "b6e78c83096487f9",
+        "id": "3d21b675e584155e",
         "type": "debug",
-        "z": "9c6ce18466c21dae",
+        "z": "4d636647c5b85c82",
         "name": "送信内容",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 620,
@@ -169,9 +185,9 @@
         "wires": []
     },
     {
-        "id": "9b0008af45176628",
+        "id": "fdaeabb47c165720",
         "type": "ui-notification",
-        "z": "9c6ce18466c21dae",
+        "z": "4d636647c5b85c82",
         "ui": "80e6c4e06f13c249",
         "position": "top right",
         "colorDefault": false,
@@ -194,9 +210,13 @@
         "name": "エントリー入力",
         "page": "uipage-01",
         "width": 12,
+        "height": "",
         "order": 1,
-        "visible": true,
-        "disabled": false
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
     },
     {
         "id": "80e6c4e06f13c249",
@@ -223,12 +243,58 @@
         "type": "ui-page",
         "name": "エントリー",
         "ui": "80e6c4e06f13c249",
+        "path": "",
         "icon": "mdi-microphone-variant",
         "layout": "notebook",
-        "order": 1
+        "theme": "c2736b8aac5855a0",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
     },
     {
-        "id": "05561c3672d9be6b",
+        "id": "c2736b8aac5855a0",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "a326df4a039d0d79",
         "type": "global-config",
         "env": [],
         "modules": {
