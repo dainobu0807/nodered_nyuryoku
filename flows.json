@@ -1,12 +1,5 @@
 [
     {
-        "id": "4d636647c5b85c82",
-        "type": "tab",
-        "label": "Karaoke UI",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "c069728dfb7f4479",
         "type": "ui-form",
         "z": "4d636647c5b85c82",
@@ -21,7 +14,14 @@
                 "label": "性別",
                 "key": "gender",
                 "type": "dropdown",
-                "required": false,
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "年代",
+                "key": "birth",
+                "type": "dropdown",
+                "required": true,
                 "rows": null
             },
             {
@@ -40,9 +40,10 @@
             }
         ],
         "formValue": {
-            "gender": "choose_gender",
-            "party": "choose_party",
-            "situation": "choose_situation"
+            "gender": "",
+            "birth": "",
+            "party": "",
+            "situation": ""
         },
         "payload": "",
         "submit": "送信",
@@ -55,88 +56,113 @@
         "dropdownOptions": [
             {
                 "dropdown": "gender",
-                "key": "choose_gender",
-                "label": "選択してください"
-            },
-            {
-                "dropdown": "gender",
-                "key": "male",
+                "value": "",
                 "label": "男性"
             },
             {
                 "dropdown": "gender",
-                "key": "female",
+                "value": "",
                 "label": "女性"
             },
             {
                 "dropdown": "gender",
-                "key": "other",
-                "label": "その他"
-            },
-            {
-                "dropdown": "gender",
-                "key": "na",
+                "value": "",
                 "label": "回答しない"
             },
             {
                 "dropdown": "party",
-                "key": "choose_party",
-                "label": "選択してください"
-            },
-            {
-                "dropdown": "party",
-                "key": "solo",
+                "value": "",
                 "label": "一人で"
             },
             {
                 "dropdown": "party",
-                "key": "family",
+                "value": "",
                 "label": "家族で"
             },
             {
                 "dropdown": "party",
-                "key": "friends",
+                "value": "",
                 "label": "友人と"
             },
             {
                 "dropdown": "party",
-                "key": "work",
+                "value": "",
                 "label": "職場仲間と"
             },
             {
                 "dropdown": "situation",
-                "key": "choose_situation",
-                "label": "選択してください"
-            },
-            {
-                "dropdown": "situation",
-                "key": "icebreak",
+                "value": "",
                 "label": "初対面のアイスブレイク"
             },
             {
                 "dropdown": "situation",
-                "key": "celebration",
+                "value": "",
                 "label": "お祝いムード"
             },
             {
                 "dropdown": "situation",
-                "key": "closing",
-                "label": "締めの一曲"
-            },
-            {
-                "dropdown": "situation",
-                "key": "duet",
+                "value": "",
                 "label": "デュエット向け"
             },
             {
                 "dropdown": "situation",
-                "key": "energy",
+                "value": "",
                 "label": "盛り上げたい"
             },
             {
                 "dropdown": "situation",
-                "key": "calm",
+                "value": "",
                 "label": "落ち着きたい"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "10代"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "20代前半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "20代後半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "30代前半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "30代後半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "40代前半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "40代後半"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "50代"
+            },
+            {
+                "dropdown": "birth",
+                "value": "",
+                "label": "60代"
+            },
+            {
+                "dropdown": "party",
+                "value": "",
+                "label": "恋人と"
             }
         ],
         "x": 160,
@@ -147,62 +173,6 @@
                 "fdaeabb47c165720"
             ]
         ]
-    },
-    {
-        "id": "6db5fdb4ee92b703",
-        "type": "function",
-        "z": "4d636647c5b85c82",
-        "name": "送信データ整形（曲推定の前処理）",
-        "func": "// プレースホルダは未選択扱いにして送信\nconst p = msg.payload || {};\nconst normalize = (v, placeholder) => (v && v !== placeholder) ? v : '';\nmsg.payload = {\n  gender: normalize(p.gender, 'choose_gender') || 'na',\n  party: normalize(p.party, 'choose_party'),\n  situation: normalize(p.situation, 'choose_situation'),\n  ts: new Date().toISOString()\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 340,
-        "y": 260,
-        "wires": [
-            [
-                "3d21b675e584155e"
-            ]
-        ]
-    },
-    {
-        "id": "3d21b675e584155e",
-        "type": "debug",
-        "z": "4d636647c5b85c82",
-        "name": "送信内容",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "fdaeabb47c165720",
-        "type": "ui-notification",
-        "z": "4d636647c5b85c82",
-        "ui": "80e6c4e06f13c249",
-        "position": "top right",
-        "colorDefault": false,
-        "color": "#1bde42",
-        "displayTime": "3",
-        "showCountdown": true,
-        "outputs": 0,
-        "allowDismiss": true,
-        "dismissText": "Close",
-        "raw": false,
-        "className": "",
-        "name": "送信しました",
-        "x": 660,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "uigroup-01",
@@ -217,26 +187,6 @@
         "visible": "true",
         "disabled": "false",
         "groupType": "default"
-    },
-    {
-        "id": "80e6c4e06f13c249",
-        "type": "ui-base",
-        "name": "My Dashboard",
-        "path": "/dashboard",
-        "appIcon": "",
-        "includeClientData": true,
-        "acceptsClientConfig": [
-            "ui-notification",
-            "ui-control"
-        ],
-        "showPathInSidebar": false,
-        "headerContent": "page",
-        "navigationStyle": "default",
-        "titleBarStyle": "default",
-        "showReconnectNotification": true,
-        "notificationDisplayTime": 1,
-        "showDisconnectNotification": true,
-        "allowInstall": false
     },
     {
         "id": "uipage-01",
@@ -275,6 +225,26 @@
         "disabled": "false"
     },
     {
+        "id": "80e6c4e06f13c249",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
         "id": "c2736b8aac5855a0",
         "type": "ui-theme",
         "name": "Default Theme",
@@ -294,7 +264,7 @@
         }
     },
     {
-        "id": "a326df4a039d0d79",
+        "id": "48ac9800f58fbc8b",
         "type": "global-config",
         "env": [],
         "modules": {
