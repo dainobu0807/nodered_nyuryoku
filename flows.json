@@ -1,228 +1,25 @@
 [
     {
-        "id": "c069728dfb7f4479",
-        "type": "ui-form",
-        "z": "4d636647c5b85c82",
-        "name": "エントリーフォーム",
-        "group": "uigroup-01",
-        "label": "",
-        "order": 1,
-        "width": 12,
-        "height": 0,
-        "options": [
-            {
-                "label": "性別",
-                "key": "gender",
-                "type": "dropdown",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "年代",
-                "key": "birth",
-                "type": "dropdown",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "参加スタイル",
-                "key": "party",
-                "type": "dropdown",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "シチュエーション",
-                "key": "situation",
-                "type": "dropdown",
-                "required": true,
-                "rows": null
-            }
-        ],
-        "formValue": {
-            "gender": "",
-            "birth": "",
-            "party": "",
-            "situation": ""
-        },
-        "payload": "",
-        "submit": "送信",
-        "cancel": "",
-        "resetOnSubmit": true,
-        "topic": "",
-        "topicType": "str",
-        "splitLayout": false,
-        "className": "",
-        "dropdownOptions": [
-            {
-                "dropdown": "gender",
-                "value": "",
-                "label": "男性"
-            },
-            {
-                "dropdown": "gender",
-                "value": "",
-                "label": "女性"
-            },
-            {
-                "dropdown": "gender",
-                "value": "",
-                "label": "回答しない"
-            },
-            {
-                "dropdown": "party",
-                "value": "",
-                "label": "一人で"
-            },
-            {
-                "dropdown": "party",
-                "value": "",
-                "label": "家族で"
-            },
-            {
-                "dropdown": "party",
-                "value": "",
-                "label": "友人と"
-            },
-            {
-                "dropdown": "party",
-                "value": "",
-                "label": "職場仲間と"
-            },
-            {
-                "dropdown": "situation",
-                "value": "",
-                "label": "初対面のアイスブレイク"
-            },
-            {
-                "dropdown": "situation",
-                "value": "",
-                "label": "お祝いムード"
-            },
-            {
-                "dropdown": "situation",
-                "value": "",
-                "label": "デュエット向け"
-            },
-            {
-                "dropdown": "situation",
-                "value": "",
-                "label": "盛り上げたい"
-            },
-            {
-                "dropdown": "situation",
-                "value": "",
-                "label": "落ち着きたい"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "10代"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "20代前半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "20代後半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "30代前半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "30代後半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "40代前半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "40代後半"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "50代"
-            },
-            {
-                "dropdown": "birth",
-                "value": "",
-                "label": "60代"
-            },
-            {
-                "dropdown": "party",
-                "value": "",
-                "label": "恋人と"
-            }
-        ],
-        "x": 160,
-        "y": 160,
-        "wires": [
-            [
-                "6db5fdb4ee92b703",
-                "fdaeabb47c165720"
-            ]
-        ]
-    },
-    {
-        "id": "uigroup-01",
-        "type": "ui-group",
-        "name": "エントリー入力",
-        "page": "uipage-01",
-        "width": 12,
-        "height": "",
-        "order": 1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "uipage-01",
-        "type": "ui-page",
-        "name": "エントリー",
+        "id": "f469088fb9ba2050",
+        "type": "ui-notification",
+        "z": "dd94f03fb756ef28",
         "ui": "80e6c4e06f13c249",
-        "path": "",
-        "icon": "mdi-microphone-variant",
-        "layout": "notebook",
-        "theme": "c2736b8aac5855a0",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": 1,
+        "position": "top right",
+        "colorDefault": false,
+        "color": "#1bde42",
+        "displayTime": "2",
+        "showCountdown": true,
+        "outputs": 0,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "",
+        "raw": false,
         "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "name": "送信しました",
+        "x": 700,
+        "y": 120,
+        "wires": []
     },
     {
         "id": "80e6c4e06f13c249",
@@ -245,26 +42,7 @@
         "allowInstall": false
     },
     {
-        "id": "c2736b8aac5855a0",
-        "type": "ui-theme",
-        "name": "Default Theme",
-        "colors": {
-            "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "density": "default",
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
-    },
-    {
-        "id": "48ac9800f58fbc8b",
+        "id": "e92b1a346b6136fe",
         "type": "global-config",
         "env": [],
         "modules": {
